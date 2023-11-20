@@ -16,7 +16,7 @@ import styles from "../styles/Home.module.css";
 import { parseIneligibility } from "../utils/parseIneligibility";
 
 const Home = () => {
-  const tokenAddress = "0x03728725240b021887355c943d040BF933F3d5F0";
+  const tokenAddress = "0x8c8a424Fd7625e2aC51F1f6F82dC60C1297cF178";
   const { contract } = useContract(tokenAddress, "token-drop");
   const address = useAddress();
   const [quantity, setQuantity] = useState(1);
@@ -241,13 +241,13 @@ const Home = () => {
           </p>
         </>
       )}
-
+      <div>Contract Address: {tokenAddress}</div>
       <hr className={styles.divider} />
 
       <div className={styles.claimGrid}>
         <input
-          type="number"
-          placeholder="Enter amount to claim"
+          type='number'
+          placeholder='Enter amount to claim'
           onChange={(e) => {
             const value = parseInt(e.target.value);
             if (value > maxClaimable) {
@@ -262,7 +262,7 @@ const Home = () => {
           className={`${styles.textInput} ${styles.noGapBottom}`}
         />
         <Web3Button
-          theme="dark"
+          theme='dark'
           contractAddress={tokenAddress}
           action={(contract) => contract.erc20.claim(quantity)}
           onSuccess={() => alert("Claimed!")}
